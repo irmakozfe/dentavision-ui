@@ -1,0 +1,36 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- disari cember -->
+  <circle cx="100" cy="100" r="92" fill="none" stroke="#8a8f98" stroke-width="3"/>
+
+  <!-- dis sekli -->
+  <path d="
+    M 100 62
+    C 90 62 85 68 76 68
+    C 62 68 55 78 55 94
+    C 55 111 60 125 64 137
+    C 67 146 71 152 77 152
+    C 83 152 84 143 87 131
+    C 89 124 92 117 100 117
+    C 108 117 111 124 113 131
+    C 116 143 117 152 123 152
+    C 129 152 133 146 136 137
+    C 140 125 145 111 145 94
+    C 145 78 138 68 124 68
+    C 115 68 110 62 100 62
+    Z
+  "
+  fill="none"
+  stroke="#3a3a3a"
+  stroke-width="5"
+  stroke-linejoin="round"
+  stroke-linecap="round"
+  />
+
+  <!-- ust kisimdaki kucuk dalgali cizgi (mine detayi) -->
+  <path d="M 82 71 C 88 76 93 76 100 71 C 107 76 112 76 118 71"
+        fill="none"
+        stroke="#3a3a3a"
+        stroke-width="4"
+        stroke-linecap="round"
+  />
+</svg>

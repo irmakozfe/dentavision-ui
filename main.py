@@ -9,11 +9,10 @@ class ControlPanel(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
  
-        # Start butonuna tiklanmasini dinle
         self.ui.startButton.clicked.connect(self.on_start_clicked)
  
     def on_start_clicked(self):
-        print("Start butonuna basildi")
+        print("Clicked startButton")
  
  
 if __name__ == "__main__":

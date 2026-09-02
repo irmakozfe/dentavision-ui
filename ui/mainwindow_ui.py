@@ -166,20 +166,20 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.Z, 0, 2, 1, 1)
 
-        self.label = QLabel(self.toothTargetFrame)
-        self.label.setObjectName(u"label")
+        self.labelX = QLabel(self.toothTargetFrame)
+        self.labelX.setObjectName(u"labelX")
 
-        self.gridLayout_2.addWidget(self.label, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.labelX, 1, 0, 1, 1)
 
-        self.label_13 = QLabel(self.toothTargetFrame)
-        self.label_13.setObjectName(u"label_13")
+        self.labelY = QLabel(self.toothTargetFrame)
+        self.labelY.setObjectName(u"labelY")
 
-        self.gridLayout_2.addWidget(self.label_13, 1, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.labelY, 1, 1, 1, 1)
 
-        self.label_14 = QLabel(self.toothTargetFrame)
-        self.label_14.setObjectName(u"label_14")
+        self.labelZ = QLabel(self.toothTargetFrame)
+        self.labelZ.setObjectName(u"labelZ")
 
-        self.gridLayout_2.addWidget(self.label_14, 1, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.labelZ, 1, 2, 1, 1)
 
 
         self.verticalLayout.addLayout(self.gridLayout_2)
@@ -191,47 +191,47 @@ class Ui_MainWindow(object):
         self.jointsFrame.setFrameShadow(QFrame.Shadow.Raised)
         self.gridLayout = QGridLayout(self.jointsFrame)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.label_9 = QLabel(self.jointsFrame)
-        self.label_9.setObjectName(u"label_9")
-        self.label_9.setStyleSheet(u"color: #768599;\n"
+        self.J6 = QLabel(self.jointsFrame)
+        self.J6.setObjectName(u"J6")
+        self.J6.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
 
-        self.gridLayout.addWidget(self.label_9, 2, 2, 1, 1)
+        self.gridLayout.addWidget(self.J6, 2, 2, 1, 1)
 
-        self.label_7 = QLabel(self.jointsFrame)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setStyleSheet(u"color: #768599;\n"
+        self.J4 = QLabel(self.jointsFrame)
+        self.J4.setObjectName(u"J4")
+        self.J4.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
 
-        self.gridLayout.addWidget(self.label_7, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.J4, 2, 0, 1, 1)
 
         self.label_6 = QLabel(self.jointsFrame)
         self.label_6.setObjectName(u"label_6")
 
         self.gridLayout.addWidget(self.label_6, 1, 1, 1, 1)
 
-        self.label_5 = QLabel(self.jointsFrame)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setStyleSheet(u"color: #768599;\n"
+        self.J3 = QLabel(self.jointsFrame)
+        self.J3.setObjectName(u"J3")
+        self.J3.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
 
-        self.gridLayout.addWidget(self.label_5, 0, 2, 1, 1)
+        self.gridLayout.addWidget(self.J3, 0, 2, 1, 1)
 
         self.label_3 = QLabel(self.jointsFrame)
         self.label_3.setObjectName(u"label_3")
 
         self.gridLayout.addWidget(self.label_3, 1, 0, 1, 1)
 
-        self.label_4 = QLabel(self.jointsFrame)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setStyleSheet(u"color: #768599;\n"
+        self.J2 = QLabel(self.jointsFrame)
+        self.J2.setObjectName(u"J2")
+        self.J2.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
 
-        self.gridLayout.addWidget(self.label_4, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.J2, 0, 1, 1, 1)
 
         self.J1 = QLabel(self.jointsFrame)
         self.J1.setObjectName(u"J1")
@@ -241,13 +241,13 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.J1, 0, 0, 1, 1)
 
-        self.label_8 = QLabel(self.jointsFrame)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setStyleSheet(u"color: #768599;\n"
+        self.J5 = QLabel(self.jointsFrame)
+        self.J5.setObjectName(u"J5")
+        self.J5.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
 
-        self.gridLayout.addWidget(self.label_8, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.J5, 2, 1, 1, 1)
 
         self.label_2 = QLabel(self.jointsFrame)
         self.label_2.setObjectName(u"label_2")
@@ -277,18 +277,23 @@ class Ui_MainWindow(object):
 "border-radius: 14px;")
         self.centerPanel.setFrameShape(QFrame.Shape.StyledPanel)
         self.centerPanel.setFrameShadow(QFrame.Shadow.Raised)
-        self.label_17 = QLabel(self.centerPanel)
-        self.label_17.setObjectName(u"label_17")
-        self.label_17.setGeometry(QRect(192, 10, 61, 16))
-        self.label_17.setStyleSheet(u"color: #768599;\n"
+        self.maxilla = QLabel(self.centerPanel)
+        self.maxilla.setObjectName(u"maxilla")
+        self.maxilla.setGeometry(QRect(192, 10, 61, 16))
+        self.maxilla.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
-        self.label_18 = QLabel(self.centerPanel)
-        self.label_18.setObjectName(u"label_18")
-        self.label_18.setGeometry(QRect(182, 458, 81, 16))
-        self.label_18.setStyleSheet(u"color: #768599;\n"
+        self.mandibula = QLabel(self.centerPanel)
+        self.mandibula.setObjectName(u"mandibula")
+        self.mandibula.setGeometry(QRect(182, 458, 81, 16))
+        self.mandibula.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
+        self.mouthFrame = QFrame(self.centerPanel)
+        self.mouthFrame.setObjectName(u"mouthFrame")
+        self.mouthFrame.setGeometry(QRect(10, 30, 431, 411))
+        self.mouthFrame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.mouthFrame.setFrameShadow(QFrame.Shadow.Raised)
         self.rightTopPanel = QFrame(self.centralwidget)
         self.rightTopPanel.setObjectName(u"rightTopPanel")
         self.rightTopPanel.setGeometry(QRect(783, 89, 285, 279))
@@ -297,10 +302,10 @@ class Ui_MainWindow(object):
 "border-radius: 14px;")
         self.rightTopPanel.setFrameShape(QFrame.Shape.StyledPanel)
         self.rightTopPanel.setFrameShadow(QFrame.Shadow.Raised)
-        self.label_16 = QLabel(self.rightTopPanel)
-        self.label_16.setObjectName(u"label_16")
-        self.label_16.setGeometry(QRect(10, 10, 111, 16))
-        self.label_16.setStyleSheet(u"color: #768599;\n"
+        self.headPositionLabel = QLabel(self.rightTopPanel)
+        self.headPositionLabel.setObjectName(u"headPositionLabel")
+        self.headPositionLabel.setGeometry(QRect(10, 10, 111, 16))
+        self.headPositionLabel.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
         self.leftBottomPanel = QFrame(self.centralwidget)
@@ -313,10 +318,10 @@ class Ui_MainWindow(object):
 "")
         self.leftBottomPanel.setFrameShape(QFrame.Shape.StyledPanel)
         self.leftBottomPanel.setFrameShadow(QFrame.Shadow.Raised)
-        self.label_15 = QLabel(self.leftBottomPanel)
-        self.label_15.setObjectName(u"label_15")
-        self.label_15.setGeometry(QRect(10, 10, 91, 16))
-        self.label_15.setStyleSheet(u"color: #768599;\n"
+        self.statusLabel = QLabel(self.leftBottomPanel)
+        self.statusLabel.setObjectName(u"statusLabel")
+        self.statusLabel.setGeometry(QRect(10, 10, 91, 16))
+        self.statusLabel.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -347,24 +352,24 @@ class Ui_MainWindow(object):
         self.Y.setText(QCoreApplication.translate("MainWindow", u"Y", None))
         self.X.setText(QCoreApplication.translate("MainWindow", u"X", None))
         self.Z.setText(QCoreApplication.translate("MainWindow", u"Z", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"J6", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"J4", None))
+        self.labelX.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.labelY.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.labelZ.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.J6.setText(QCoreApplication.translate("MainWindow", u"J6", None))
+        self.J4.setText(QCoreApplication.translate("MainWindow", u"J4", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"J3", None))
+        self.J3.setText(QCoreApplication.translate("MainWindow", u"J3", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"J2", None))
+        self.J2.setText(QCoreApplication.translate("MainWindow", u"J2", None))
         self.J1.setText(QCoreApplication.translate("MainWindow", u"J1", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"J5", None))
+        self.J5.setText(QCoreApplication.translate("MainWindow", u"J5", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_17.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MAXILLA</p><p><br/></p></body></html>", None))
-        self.label_18.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MANDIBULA</p></body></html>", None))
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">HEAD POSITION</span></p></body></html>", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">STATUS</span></p></body></html>", None))
+        self.maxilla.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MAXILLA</p><p><br/></p></body></html>", None))
+        self.mandibula.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MANDIBULA</p></body></html>", None))
+        self.headPositionLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">HEAD POSITION</span></p></body></html>", None))
+        self.statusLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">STATUS</span></p></body></html>", None))
     # retranslateUi
 

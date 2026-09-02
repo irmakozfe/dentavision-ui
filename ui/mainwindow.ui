@@ -312,21 +312,21 @@ font-family: &quot;Helvetica&quot;;</string>
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="labelX">
           <property name="text">
            <string>TextLabel</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLabel" name="label_13">
+         <widget class="QLabel" name="labelY">
           <property name="text">
            <string>TextLabel</string>
           </property>
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="QLabel" name="label_14">
+         <widget class="QLabel" name="labelZ">
           <property name="text">
            <string>TextLabel</string>
           </property>
@@ -353,7 +353,7 @@ font-family: &quot;Helvetica&quot;;</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="2" column="2">
-       <widget class="QLabel" name="label_9">
+       <widget class="QLabel" name="J6">
         <property name="styleSheet">
          <string notr="true">color: #768599;
 font-weight: 450;
@@ -365,7 +365,7 @@ font-family: &quot;Helvetica&quot;;</string>
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_7">
+       <widget class="QLabel" name="J4">
         <property name="styleSheet">
          <string notr="true">color: #768599;
 font-weight: 450;
@@ -384,7 +384,7 @@ font-family: &quot;Helvetica&quot;;</string>
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="J3">
         <property name="styleSheet">
          <string notr="true">color: #768599;
 font-weight: 450;
@@ -403,7 +403,7 @@ font-family: &quot;Helvetica&quot;;</string>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="J2">
         <property name="styleSheet">
          <string notr="true">color: #768599;
 font-weight: 450;
@@ -427,7 +427,7 @@ font-family: &quot;Helvetica&quot;;</string>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLabel" name="label_8">
+       <widget class="QLabel" name="J5">
         <property name="styleSheet">
          <string notr="true">color: #768599;
 font-weight: 450;
@@ -489,7 +489,7 @@ border-radius: 14px;</string>
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_17">
+    <widget class="QLabel" name="maxilla">
      <property name="geometry">
       <rect>
        <x>192</x>
@@ -507,7 +507,7 @@ font-family: &quot;Helvetica&quot;;</string>
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;MAXILLA&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_18">
+    <widget class="QLabel" name="mandibula">
      <property name="geometry">
       <rect>
        <x>182</x>
@@ -523,6 +523,22 @@ font-family: &quot;Helvetica&quot;;</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;MANDIBULA&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="mouthFrame">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>431</width>
+       <height>411</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
     </widget>
    </widget>
@@ -546,7 +562,7 @@ border-radius: 14px;</string>
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_16">
+    <widget class="QLabel" name="headPositionLabel">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -587,7 +603,7 @@ font-size:17px;
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_15">
+    <widget class="QLabel" name="statusLabel">
      <property name="geometry">
       <rect>
        <x>10</x>

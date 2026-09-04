@@ -27,12 +27,27 @@ class ControlPanel(QMainWindow):
         self.camera = CameraController(
             parent_frame= self.ui.rightTopPanel,
             header_label= self.ui.headPositionLabel,
-            face_status_label= self.ui.faceDetectedLabel
+            face_status_label= self.ui.faceDetectedLabel,
+            stabilization_successful_label = self.ui.stabilizationSuccessfulLabel,
+            head_not_stabilized_label = self.ui.headIsNotStabilizedLabel,
+            scanning_label = self.ui.scanningLabel
         )
         self.camera.start()
 
     def on_start_clicked(self):
+        self.camera.start_scanning() 
         print("Clicked startButton")
+
+        if self.camera.face_detected and self.camera.stabilized:
+            self.ui.scanningLabel.show()
+            return
+
+        if not self.camera.face_detected:
+            print("FACE NOT DETECTED")
+
+        if self.camera.face_detected and not self.camera.stabilized:
+            print("HEAD IS NOT STABILIZED") 
+
 
     def on_tooth_selected(self, tooth):
         print(f"Tooth {tooth.number} is selected")

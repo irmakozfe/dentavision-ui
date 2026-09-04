@@ -356,7 +356,7 @@ class Ui_MainWindow(object):
         self.headIsNotStabilizedLabel = QLabel(self.leftBottomPanel)
         self.headIsNotStabilizedLabel.setObjectName(u"headIsNotStabilizedLabel")
         self.headIsNotStabilizedLabel.setGeometry(QRect(20, 60, 211, 16))
-        self.headIsNotStabilizedLabel.setStyleSheet(u"   color: #11AC00;\n"
+        self.headIsNotStabilizedLabel.setStyleSheet(u"   color: #FCAD09;\n"
 "   font-weight: 600;\n"
 "   font-size: 11px;")
         MainWindow.setCentralWidget(self.centralwidget)

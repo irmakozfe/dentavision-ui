@@ -712,7 +712,7 @@ font-family: &quot;Helvetica&quot;;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">   color: #11AC00;
+      <string notr="true">   color: #FCAD09;
    font-weight: 600;
    font-size: 11px;</string>
      </property>

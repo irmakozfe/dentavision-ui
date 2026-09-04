@@ -4,10 +4,10 @@ from PySide6.QtCore import QRectF, Qt
 from PySide6.QtGui import QColor, QPainter, QPainterPath
 from PySide6.QtWidgets import QLabel, QWidget
 
-RED_RGB = (200, 60, 60)
+RED = (200, 60, 60)
 
-FIXED_DOT_RADIUS = 1.5
-FIXED_DOT_Y_RATIO = 0.60  
+RED_DOT_SIZE = 1.5
+RED_DOT_Y_AXIS = 0.60  
 
 class RoundedVideoLabel(QLabel):
 
@@ -46,13 +46,18 @@ class RoundedVideoLabel(QLabel):
         painter.drawPixmap(x, y, scaled)
 
         dot_x = self.width() // 2
-        dot_y = int(self.height() * FIXED_DOT_Y_RATIO)
+        dot_y = int(self.height() * RED_DOT_Y_AXIS
+    )
 
         painter.setPen(Qt.NoPen)
-        painter.setBrush(QColor(*RED_RGB))
+        painter.setBrush(QColor(*RED))
         painter.drawEllipse(
-            dot_x - FIXED_DOT_RADIUS,
-            dot_y - FIXED_DOT_RADIUS,
-            FIXED_DOT_RADIUS * 2,
-            FIXED_DOT_RADIUS * 2,
+            dot_x - RED_DOT_SIZE
+        ,
+            dot_y - RED_DOT_SIZE
+        ,
+            RED_DOT_SIZE
+         * 2,
+            RED_DOT_SIZE
+         * 2,
         )

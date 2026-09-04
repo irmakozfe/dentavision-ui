@@ -45,7 +45,7 @@ class Ui_MainWindow(object):
         self.titleLabel = QLabel(self.topPanel)
         self.titleLabel.setObjectName(u"titleLabel")
         self.titleLabel.setMinimumSize(QSize(175, 19))
-        self.titleLabel.setStyleSheet(u"color: #118983;\n"
+        self.titleLabel.setStyleSheet(u"color: #0E7772;\n"
 "font-size: 18px;\n"
 "font-weight: bold;\n"
 "font-family: \"Helvetica\"")
@@ -77,7 +77,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.startButton.sizePolicy().hasHeightForWidth())
         self.startButton.setSizePolicy(sizePolicy)
-        self.startButton.setStyleSheet(u"background-color: #118983;\n"
+        self.startButton.setStyleSheet(u"background-color: #0E7772;\n"
 "color: white;\n"
 "border: none;\n"
 "border-radius: 10px;\n"

@@ -1,15 +1,17 @@
 import math
 from PySide6.QtWidgets import QPushButton
- 
+from core.models import Tooth
+from core.teeth_data import UPPER_TEETH, LOWER_TEETH, TOOTH_NAMES
  
 class ToothChartController:
- 
-    UPPER_TEETH = [18, 17, 16, 15, 14, 13, 12, 11, 21, 22, 23, 24, 25, 26, 27, 28]
-    LOWER_TEETH = [48, 47, 46, 45, 44, 43, 42, 41, 31, 32, 33, 34, 35, 36, 37, 38]
  
     def __init__(self, mouth_frame, on_tooth_selected=None):
         self.mouth_frame = mouth_frame
         self.on_tooth_selected = on_tooth_selected
+        self.teeth = {
+            number: Tooth(number=number, name=name, x=0.0, y=0.0, z=0.0)
+            for number, name in TOOTH_NAMES.items()
+        }
         self.tooth_buttons = {}
         self.selected_tooth = None
  
@@ -26,13 +28,13 @@ class ToothChartController:
         button_size = 34
 
         self._place_teeth_on_arc(
-            self.UPPER_TEETH, center_x, center_y,
+            UPPER_TEETH, center_x, center_y,
             radius_x, radius_y, button_size,
             start_angle=195, end_angle=345
         )
  
         self._place_teeth_on_arc(
-            self.LOWER_TEETH, center_x, center_y,
+            LOWER_TEETH, center_x, center_y,
             radius_x, radius_y, button_size,
             start_angle=165, end_angle=15
         )
@@ -58,25 +60,26 @@ class ToothChartController:
     def _handle_click(self, tooth_number):
 
         if self.selected_tooth is not None:
-            prev_btn = self.tooth_buttons[self.selected_tooth]
+            prev_btn = self.tooth_buttons[self.selected_tooth.number]
             prev_btn.setStyleSheet(self._normal_style())
  
 
-        self.selected_tooth = tooth_number
+        tooth = self.teeth[tooth_number]
+        self.selected_tooth = tooth
         selected_btn = self.tooth_buttons[tooth_number]
         selected_btn.setStyleSheet(self._selected_style())
  
         if self.on_tooth_selected:
-            self.on_tooth_selected(tooth_number)
+            self.on_tooth_selected(tooth)
  
     @staticmethod
     def _normal_style():
         return """
             QPushButton {
-                border: 2px solid #118983;
+                border: 2px solid #0E7772;
                 border-radius: 17px;
                 background-color: white;
-                color: #118983;
+                color: #0E7772;
                 font-weight: bold;
             }
             QPushButton:hover {
@@ -88,9 +91,9 @@ class ToothChartController:
     def _selected_style():
         return """
             QPushButton {
-                border: 2px solid #118983;
+                border: 2px solid #0E7772;
                 border-radius: 17px;
-                background-color: #118983;
+                background-color: #0E7772;
                 color: white;
                 font-weight: bold;
             }

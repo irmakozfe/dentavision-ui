@@ -1,11 +1,19 @@
 from core.models import Tooth
 from ui.selected_tooth_badge import SelectedToothBadge
- 
+from pathlib import Path
+from PySide6.QtGui import QPixmap
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
  
 class ToothInfoController:
 
     def __init__(self, ui):
         self._empty_widgets = [ui.toothIconLabel, ui.noToothSelected, ui.selectATooth]
+
+        icon_path = PROJECT_ROOT / "tooth_circle.svg"
+        ui.toothIconLabel.setPixmap(QPixmap(str(icon_path)))
+ 
  
         self.badge = SelectedToothBadge(ui.leftPanel)
         self.badge.setGeometry(10, 55, 260, 61)

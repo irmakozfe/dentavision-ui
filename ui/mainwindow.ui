@@ -225,7 +225,7 @@ color: #455360;
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>291</y>
+       <y>280</y>
        <width>58</width>
        <height>16</height>
       </rect>
@@ -243,9 +243,9 @@ font-family: &quot;Helvetica&quot;;</string>
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>151</y>
+       <y>140</y>
        <width>281</width>
-       <height>91</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="frameShape">
@@ -339,9 +339,9 @@ font-family: &quot;Helvetica&quot;;</string>
     <widget class="QFrame" name="jointsFrame">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>10</x>
        <y>310</y>
-       <width>281</width>
+       <width>271</width>
        <height>121</height>
       </rect>
      </property>
@@ -352,27 +352,15 @@ font-family: &quot;Helvetica&quot;;</string>
       <enum>QFrame::Shadow::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="2" column="2">
-       <widget class="QLabel" name="J6">
+      <item row="2" column="1">
+       <widget class="QLabel" name="J5">
         <property name="styleSheet">
          <string notr="true">color: #768599;
 font-weight: 450;
 font-family: &quot;Helvetica&quot;;</string>
         </property>
         <property name="text">
-         <string>J6</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="J4">
-        <property name="styleSheet">
-         <string notr="true">color: #768599;
-font-weight: 450;
-font-family: &quot;Helvetica&quot;;</string>
-        </property>
-        <property name="text">
-         <string>J4</string>
+         <string>J5</string>
         </property>
        </widget>
       </item>
@@ -383,20 +371,22 @@ font-family: &quot;Helvetica&quot;;</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <widget class="QLabel" name="J3">
-        <property name="styleSheet">
-         <string notr="true">color: #768599;
-font-weight: 450;
-font-family: &quot;Helvetica&quot;;</string>
-        </property>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_10">
         <property name="text">
-         <string>J3</string>
+         <string>TextLabel</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="label_11">
         <property name="text">
          <string>TextLabel</string>
         </property>
@@ -414,6 +404,56 @@ font-family: &quot;Helvetica&quot;;</string>
         </property>
        </widget>
       </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="J4">
+        <property name="styleSheet">
+         <string notr="true">color: #768599;
+font-weight: 450;
+font-family: &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>J4</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="J6">
+        <property name="styleSheet">
+         <string notr="true">color: #768599;
+font-weight: 450;
+font-family: &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>J6</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="J3">
+        <property name="styleSheet">
+         <string notr="true">color: #768599;
+font-weight: 450;
+font-family: &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>J3</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="J1">
         <property name="styleSheet">
@@ -426,47 +466,34 @@ font-family: &quot;Helvetica&quot;;</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="J5">
-        <property name="styleSheet">
-         <string notr="true">color: #768599;
-font-weight: 450;
-font-family: &quot;Helvetica&quot;;</string>
-        </property>
-        <property name="text">
-         <string>J5</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLabel" name="label_11">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLabel" name="label_12">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
      </layout>
+    </widget>
+    <widget class="QPushButton" name="motionControlButton">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>450</y>
+       <width>161</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #0E7772;
+background-color: white;
+border: 2px solid  #0E7772;
+font-weight: bold;
+font-size: 12px;
+</string>
+     </property>
+     <property name="text">
+      <string>MOTION CONTROL</string>
+     </property>
     </widget>
    </widget>
    <widget class="QFrame" name="centerPanel">
@@ -619,6 +646,78 @@ font-family: &quot;Helvetica&quot;;</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;STATUS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="faceDetectedLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>211</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">   color: #11AC00;
+   font-weight: 600;
+   font-size: 11px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;● FACE DETECTED&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="stabilizationSuccessfulLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>211</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">   color: #11AC00;
+   font-weight: 600;
+   font-size: 11px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;● STABILIZATION SUCCESSFUL&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="scanningLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>80</y>
+       <width>211</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">   color: #11AC00;
+   font-weight: 600;
+   font-size: 11px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;● SCANNING...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="headIsNotStabilizedLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>211</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">   color: #11AC00;
+   font-weight: 600;
+   font-size: 11px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;● HEAD IS NOT STABILIZED&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>

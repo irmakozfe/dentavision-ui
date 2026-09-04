@@ -56,7 +56,7 @@ class Ui_MainWindow(object):
         self.subtitleLabel = QLabel(self.topPanel)
         self.subtitleLabel.setObjectName(u"subtitleLabel")
         self.subtitleLabel.setMinimumSize(QSize(175, 0))
-        self.subtitleLabel.setStyleSheet(u"color: #333333;\n"
+        self.subtitleLabel.setStyleSheet(u"color: #455360;\n"
 "font-size: 17px;\n"
 "font-family: \"Helvetica\"\n"
 "")
@@ -116,17 +116,17 @@ class Ui_MainWindow(object):
         self.noToothSelected.setGeometry(QRect(83, 62, 147, 21))
         self.noToothSelected.setStyleSheet(u"font-size: 17px;\n"
 "font-weight: 450;\n"
-"color: #333333;\n"
+"color: #455360;\n"
 "")
         self.joints = QLabel(self.leftPanel)
         self.joints.setObjectName(u"joints")
-        self.joints.setGeometry(QRect(10, 291, 58, 16))
+        self.joints.setGeometry(QRect(10, 280, 58, 16))
         self.joints.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
         self.toothTargetFrame = QFrame(self.leftPanel)
         self.toothTargetFrame.setObjectName(u"toothTargetFrame")
-        self.toothTargetFrame.setGeometry(QRect(0, 151, 281, 91))
+        self.toothTargetFrame.setGeometry(QRect(0, 140, 281, 101))
         self.toothTargetFrame.setFrameShape(QFrame.Shape.StyledPanel)
         self.toothTargetFrame.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout = QVBoxLayout(self.toothTargetFrame)
@@ -186,44 +186,38 @@ class Ui_MainWindow(object):
 
         self.jointsFrame = QFrame(self.leftPanel)
         self.jointsFrame.setObjectName(u"jointsFrame")
-        self.jointsFrame.setGeometry(QRect(0, 310, 281, 121))
+        self.jointsFrame.setGeometry(QRect(10, 310, 271, 121))
         self.jointsFrame.setFrameShape(QFrame.Shape.StyledPanel)
         self.jointsFrame.setFrameShadow(QFrame.Shadow.Raised)
         self.gridLayout = QGridLayout(self.jointsFrame)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.J6 = QLabel(self.jointsFrame)
-        self.J6.setObjectName(u"J6")
-        self.J6.setStyleSheet(u"color: #768599;\n"
+        self.J5 = QLabel(self.jointsFrame)
+        self.J5.setObjectName(u"J5")
+        self.J5.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
 
-        self.gridLayout.addWidget(self.J6, 2, 2, 1, 1)
-
-        self.J4 = QLabel(self.jointsFrame)
-        self.J4.setObjectName(u"J4")
-        self.J4.setStyleSheet(u"color: #768599;\n"
-"font-weight: 450;\n"
-"font-family: \"Helvetica\";")
-
-        self.gridLayout.addWidget(self.J4, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.J5, 2, 1, 1, 1)
 
         self.label_6 = QLabel(self.jointsFrame)
         self.label_6.setObjectName(u"label_6")
 
         self.gridLayout.addWidget(self.label_6, 1, 1, 1, 1)
 
-        self.J3 = QLabel(self.jointsFrame)
-        self.J3.setObjectName(u"J3")
-        self.J3.setStyleSheet(u"color: #768599;\n"
-"font-weight: 450;\n"
-"font-family: \"Helvetica\";")
+        self.label_10 = QLabel(self.jointsFrame)
+        self.label_10.setObjectName(u"label_10")
 
-        self.gridLayout.addWidget(self.J3, 0, 2, 1, 1)
+        self.gridLayout.addWidget(self.label_10, 3, 0, 1, 1)
 
         self.label_3 = QLabel(self.jointsFrame)
         self.label_3.setObjectName(u"label_3")
 
         self.gridLayout.addWidget(self.label_3, 1, 0, 1, 1)
+
+        self.label_11 = QLabel(self.jointsFrame)
+        self.label_11.setObjectName(u"label_11")
+
+        self.gridLayout.addWidget(self.label_11, 3, 1, 1, 1)
 
         self.J2 = QLabel(self.jointsFrame)
         self.J2.setObjectName(u"J2")
@@ -233,6 +227,40 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.J2, 0, 1, 1, 1)
 
+        self.label_12 = QLabel(self.jointsFrame)
+        self.label_12.setObjectName(u"label_12")
+
+        self.gridLayout.addWidget(self.label_12, 3, 2, 1, 1)
+
+        self.J4 = QLabel(self.jointsFrame)
+        self.J4.setObjectName(u"J4")
+        self.J4.setStyleSheet(u"color: #768599;\n"
+"font-weight: 450;\n"
+"font-family: \"Helvetica\";")
+
+        self.gridLayout.addWidget(self.J4, 2, 0, 1, 1)
+
+        self.label_2 = QLabel(self.jointsFrame)
+        self.label_2.setObjectName(u"label_2")
+
+        self.gridLayout.addWidget(self.label_2, 1, 2, 1, 1)
+
+        self.J6 = QLabel(self.jointsFrame)
+        self.J6.setObjectName(u"J6")
+        self.J6.setStyleSheet(u"color: #768599;\n"
+"font-weight: 450;\n"
+"font-family: \"Helvetica\";")
+
+        self.gridLayout.addWidget(self.J6, 2, 2, 1, 1)
+
+        self.J3 = QLabel(self.jointsFrame)
+        self.J3.setObjectName(u"J3")
+        self.J3.setStyleSheet(u"color: #768599;\n"
+"font-weight: 450;\n"
+"font-family: \"Helvetica\";")
+
+        self.gridLayout.addWidget(self.J3, 0, 2, 1, 1)
+
         self.J1 = QLabel(self.jointsFrame)
         self.J1.setObjectName(u"J1")
         self.J1.setStyleSheet(u"color: #768599;\n"
@@ -241,34 +269,17 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.J1, 0, 0, 1, 1)
 
-        self.J5 = QLabel(self.jointsFrame)
-        self.J5.setObjectName(u"J5")
-        self.J5.setStyleSheet(u"color: #768599;\n"
-"font-weight: 450;\n"
-"font-family: \"Helvetica\";")
-
-        self.gridLayout.addWidget(self.J5, 2, 1, 1, 1)
-
-        self.label_2 = QLabel(self.jointsFrame)
-        self.label_2.setObjectName(u"label_2")
-
-        self.gridLayout.addWidget(self.label_2, 1, 2, 1, 1)
-
-        self.label_10 = QLabel(self.jointsFrame)
-        self.label_10.setObjectName(u"label_10")
-
-        self.gridLayout.addWidget(self.label_10, 3, 0, 1, 1)
-
-        self.label_11 = QLabel(self.jointsFrame)
-        self.label_11.setObjectName(u"label_11")
-
-        self.gridLayout.addWidget(self.label_11, 3, 1, 1, 1)
-
-        self.label_12 = QLabel(self.jointsFrame)
-        self.label_12.setObjectName(u"label_12")
-
-        self.gridLayout.addWidget(self.label_12, 3, 2, 1, 1)
-
+        self.motionControlButton = QPushButton(self.leftPanel)
+        self.motionControlButton.setObjectName(u"motionControlButton")
+        self.motionControlButton.setGeometry(QRect(50, 450, 161, 28))
+        sizePolicy.setHeightForWidth(self.motionControlButton.sizePolicy().hasHeightForWidth())
+        self.motionControlButton.setSizePolicy(sizePolicy)
+        self.motionControlButton.setStyleSheet(u"color: #0E7772;\n"
+"background-color: white;\n"
+"border: 2px solid  #0E7772;\n"
+"font-weight: bold;\n"
+"font-size: 12px;\n"
+"")
         self.centerPanel = QFrame(self.centralwidget)
         self.centerPanel.setObjectName(u"centerPanel")
         self.centerPanel.setGeometry(QRect(310, 89, 458, 490))
@@ -324,6 +335,30 @@ class Ui_MainWindow(object):
         self.statusLabel.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
+        self.faceDetectedLabel = QLabel(self.leftBottomPanel)
+        self.faceDetectedLabel.setObjectName(u"faceDetectedLabel")
+        self.faceDetectedLabel.setGeometry(QRect(20, 40, 211, 16))
+        self.faceDetectedLabel.setStyleSheet(u"   color: #11AC00;\n"
+"   font-weight: 600;\n"
+"   font-size: 11px;")
+        self.stabilizationSuccessfulLabel = QLabel(self.leftBottomPanel)
+        self.stabilizationSuccessfulLabel.setObjectName(u"stabilizationSuccessfulLabel")
+        self.stabilizationSuccessfulLabel.setGeometry(QRect(20, 60, 211, 16))
+        self.stabilizationSuccessfulLabel.setStyleSheet(u"   color: #11AC00;\n"
+"   font-weight: 600;\n"
+"   font-size: 11px;")
+        self.scanningLabel = QLabel(self.leftBottomPanel)
+        self.scanningLabel.setObjectName(u"scanningLabel")
+        self.scanningLabel.setGeometry(QRect(20, 80, 211, 16))
+        self.scanningLabel.setStyleSheet(u"   color: #11AC00;\n"
+"   font-weight: 600;\n"
+"   font-size: 11px;")
+        self.headIsNotStabilizedLabel = QLabel(self.leftBottomPanel)
+        self.headIsNotStabilizedLabel.setObjectName(u"headIsNotStabilizedLabel")
+        self.headIsNotStabilizedLabel.setGeometry(QRect(20, 60, 211, 16))
+        self.headIsNotStabilizedLabel.setStyleSheet(u"   color: #11AC00;\n"
+"   font-weight: 600;\n"
+"   font-size: 11px;")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -355,21 +390,26 @@ class Ui_MainWindow(object):
         self.labelX.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.labelY.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.labelZ.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.J6.setText(QCoreApplication.translate("MainWindow", u"J6", None))
-        self.J4.setText(QCoreApplication.translate("MainWindow", u"J4", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.J3.setText(QCoreApplication.translate("MainWindow", u"J3", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.J2.setText(QCoreApplication.translate("MainWindow", u"J2", None))
-        self.J1.setText(QCoreApplication.translate("MainWindow", u"J1", None))
         self.J5.setText(QCoreApplication.translate("MainWindow", u"J5", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.J2.setText(QCoreApplication.translate("MainWindow", u"J2", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.J4.setText(QCoreApplication.translate("MainWindow", u"J4", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.J6.setText(QCoreApplication.translate("MainWindow", u"J6", None))
+        self.J3.setText(QCoreApplication.translate("MainWindow", u"J3", None))
+        self.J1.setText(QCoreApplication.translate("MainWindow", u"J1", None))
+        self.motionControlButton.setText(QCoreApplication.translate("MainWindow", u"MOTION CONTROL", None))
         self.maxilla.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MAXILLA</p><p><br/></p></body></html>", None))
         self.mandibula.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MANDIBULA</p></body></html>", None))
         self.headPositionLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">HEAD POSITION</span></p></body></html>", None))
         self.statusLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">STATUS</span></p></body></html>", None))
+        self.faceDetectedLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf FACE DETECTED</span></p></body></html>", None))
+        self.stabilizationSuccessfulLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf STABILIZATION SUCCESSFUL</span></p></body></html>", None))
+        self.scanningLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf SCANNING...</span></p></body></html>", None))
+        self.headIsNotStabilizedLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf HEAD IS NOT STABILIZED</span></p></body></html>", None))
     # retranslateUi
 

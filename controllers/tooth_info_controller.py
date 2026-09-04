@@ -14,7 +14,6 @@ class ToothInfoController:
         icon_path = PROJECT_ROOT / "tooth_circle.svg"
         ui.toothIconLabel.setPixmap(QPixmap(str(icon_path)))
  
- 
         self.badge = SelectedToothBadge(ui.leftPanel)
         self.badge.setGeometry(10, 55, 260, 61)
         self.badge.hide()

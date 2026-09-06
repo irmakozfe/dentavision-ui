@@ -9,12 +9,6 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
 class ToothInfoController:
-    """Toggles leftPanel's top area between the empty state
-    ('No tooth selected' + tooth icon — toothIconLabel/noToothSelected/
-    selectATooth from mainwindow.ui) and the selected state (teal
-    circle badge + tooth name), driven by ToothChartController's
-    on_tooth_selected callback.
-    """
 
     def __init__(self, ui):
         self._empty_widgets = [ui.toothIconLabel, ui.noToothSelected, ui.selectATooth]

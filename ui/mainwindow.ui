@@ -313,22 +313,31 @@ font-family: &quot;Helvetica&quot;;</string>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="labelX">
+          <property name="styleSheet">
+           <string notr="true">color: #0E7772</string>
+          </property>
           <property name="text">
-           <string>TextLabel</string>
+           <string>-</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
          <widget class="QLabel" name="labelY">
+          <property name="styleSheet">
+           <string notr="true">color: #0E7772</string>
+          </property>
           <property name="text">
-           <string>TextLabel</string>
+           <string>-</string>
           </property>
          </widget>
         </item>
         <item row="1" column="2">
          <widget class="QLabel" name="labelZ">
+          <property name="styleSheet">
+           <string notr="true">color: #0E7772</string>
+          </property>
           <property name="text">
-           <string>TextLabel</string>
+           <string>-</string>
           </property>
          </widget>
         </item>
@@ -366,29 +375,41 @@ font-family: &quot;Helvetica&quot;;</string>
       </item>
       <item row="1" column="1">
        <widget class="QLabel" name="label_6">
+        <property name="styleSheet">
+         <string notr="true">color: #0E7772</string>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>-</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_10">
+        <property name="styleSheet">
+         <string notr="true">color: #0E7772</string>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>-</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">color: #0E7772</string>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>-</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
        <widget class="QLabel" name="label_11">
+        <property name="styleSheet">
+         <string notr="true">color: #0E7772</string>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>-</string>
         </property>
        </widget>
       </item>
@@ -406,8 +427,11 @@ font-family: &quot;Helvetica&quot;;</string>
       </item>
       <item row="3" column="2">
        <widget class="QLabel" name="label_12">
+        <property name="styleSheet">
+         <string notr="true">color: #0E7772</string>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>-</string>
         </property>
        </widget>
       </item>
@@ -425,8 +449,11 @@ font-family: &quot;Helvetica&quot;;</string>
       </item>
       <item row="1" column="2">
        <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">color: #0E7772</string>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>-</string>
         </property>
        </widget>
       </item>

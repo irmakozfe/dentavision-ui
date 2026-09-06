@@ -168,16 +168,19 @@ class Ui_MainWindow(object):
 
         self.labelX = QLabel(self.toothTargetFrame)
         self.labelX.setObjectName(u"labelX")
+        self.labelX.setStyleSheet(u"color: #0E7772")
 
         self.gridLayout_2.addWidget(self.labelX, 1, 0, 1, 1)
 
         self.labelY = QLabel(self.toothTargetFrame)
         self.labelY.setObjectName(u"labelY")
+        self.labelY.setStyleSheet(u"color: #0E7772")
 
         self.gridLayout_2.addWidget(self.labelY, 1, 1, 1, 1)
 
         self.labelZ = QLabel(self.toothTargetFrame)
         self.labelZ.setObjectName(u"labelZ")
+        self.labelZ.setStyleSheet(u"color: #0E7772")
 
         self.gridLayout_2.addWidget(self.labelZ, 1, 2, 1, 1)
 
@@ -201,21 +204,25 @@ class Ui_MainWindow(object):
 
         self.label_6 = QLabel(self.jointsFrame)
         self.label_6.setObjectName(u"label_6")
+        self.label_6.setStyleSheet(u"color: #0E7772")
 
         self.gridLayout.addWidget(self.label_6, 1, 1, 1, 1)
 
         self.label_10 = QLabel(self.jointsFrame)
         self.label_10.setObjectName(u"label_10")
+        self.label_10.setStyleSheet(u"color: #0E7772")
 
         self.gridLayout.addWidget(self.label_10, 3, 0, 1, 1)
 
         self.label_3 = QLabel(self.jointsFrame)
         self.label_3.setObjectName(u"label_3")
+        self.label_3.setStyleSheet(u"color: #0E7772")
 
         self.gridLayout.addWidget(self.label_3, 1, 0, 1, 1)
 
         self.label_11 = QLabel(self.jointsFrame)
         self.label_11.setObjectName(u"label_11")
+        self.label_11.setStyleSheet(u"color: #0E7772")
 
         self.gridLayout.addWidget(self.label_11, 3, 1, 1, 1)
 
@@ -229,6 +236,7 @@ class Ui_MainWindow(object):
 
         self.label_12 = QLabel(self.jointsFrame)
         self.label_12.setObjectName(u"label_12")
+        self.label_12.setStyleSheet(u"color: #0E7772")
 
         self.gridLayout.addWidget(self.label_12, 3, 2, 1, 1)
 
@@ -242,6 +250,7 @@ class Ui_MainWindow(object):
 
         self.label_2 = QLabel(self.jointsFrame)
         self.label_2.setObjectName(u"label_2")
+        self.label_2.setStyleSheet(u"color: #0E7772")
 
         self.gridLayout.addWidget(self.label_2, 1, 2, 1, 1)
 
@@ -387,18 +396,18 @@ class Ui_MainWindow(object):
         self.Y.setText(QCoreApplication.translate("MainWindow", u"Y", None))
         self.X.setText(QCoreApplication.translate("MainWindow", u"X", None))
         self.Z.setText(QCoreApplication.translate("MainWindow", u"Z", None))
-        self.labelX.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.labelY.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.labelZ.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.labelX.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.labelY.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.labelZ.setText(QCoreApplication.translate("MainWindow", u"-", None))
         self.J5.setText(QCoreApplication.translate("MainWindow", u"J5", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"-", None))
         self.J2.setText(QCoreApplication.translate("MainWindow", u"J2", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"-", None))
         self.J4.setText(QCoreApplication.translate("MainWindow", u"J4", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"-", None))
         self.J6.setText(QCoreApplication.translate("MainWindow", u"J6", None))
         self.J3.setText(QCoreApplication.translate("MainWindow", u"J3", None))
         self.J1.setText(QCoreApplication.translate("MainWindow", u"J1", None))

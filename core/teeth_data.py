@@ -1,4 +1,5 @@
 #Tooth numbers (FDI notation) and names
+import math
 UPPER_TEETH = [18, 17, 16, 15, 14, 13, 12, 11, 21, 22, 23, 24, 25, 26, 27, 28]
 LOWER_TEETH = [48, 47, 46, 45, 44, 43, 42, 41, 31, 32, 33, 34, 35, 36, 37, 38]
  
@@ -16,6 +17,33 @@ TOOTH_NAMES = {
     34: "Lower Left First Premolar", 35: "Lower Left Second Premolar", 36: "Lower Left First Molar",
     37: "Lower Left Second Molar", 38: "Lower Left Third Molar",
 }
+
+
+ARCH_WIDTH_MM = 45.0   # left-right half-width of the arch at its widest tooth
+ARCH_HEIGHT_MM = 8.0   # how far the curve rises/falls from the centerline
+
+_UPPER_ANGLE_RANGE = (195,345)
+_LOWER_ANGLE_RANGE = (165, 15)
+
+def _arc_offsets(tooth_numbers: list[int], angle_range: tuple[float, float], y_sign: int) -> dict[int, tuple[float, float]]:
+    start_angle, end_angle = angle_range
+    count = len(tooth_numbers)
+    offsets = {}
+    for i, tooth_number in enumerate(tooth_numbers):
+        angle_deg = start_angle + (end_angle - start_angle) * i / (count - 1)
+        angle_rad = math.radians(angle_deg)
+        dx = ARCH_WIDTH_MM * math.cos(angle_rad)
+        dy = y_sign * ARCH_HEIGHT_MM * abs(math.sin(angle_rad))
+        offsets[tooth_number] = (dx, dy)
+    return offsets
  
+ 
+TOOTH_OFFSETS_MM: dict[int, tuple[float, float]] = {
+    **_arc_offsets(UPPER_TEETH, _UPPER_ANGLE_RANGE, y_sign=+1),
+    **_arc_offsets(LOWER_TEETH, _LOWER_ANGLE_RANGE, y_sign=-1),
+}
+ 
+
+
 
 

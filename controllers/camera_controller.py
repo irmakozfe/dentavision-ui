@@ -31,13 +31,15 @@ STABILIZATION_TOLERANCE_PX = 30
 class CameraController:
 
     def __init__(
-            self, 
+            self,
             parent_frame,
-            header_label, 
+            header_label,
             face_status_label=None,
             stabilization_successful_label=None,
-            head_not_stabilized_label=None, 
+            head_not_stabilized_label=None,
             scanning_label=None,
+            on_tracking_lost=None,       
+            on_tracking_restored=None,   
             interval_ms: int = 30
         ):
         self.video_label = RoundedVideoLabel(radius=14, parent=parent_frame)
@@ -48,10 +50,14 @@ class CameraController:
 
         self.stabilization_label = stabilization_successful_label
         self.head_not_stabilized_label = head_not_stabilized_label
-        self._stabilization_state: str | None = None 
+        self._stabilization_state: str | None = None
 
         self.scanning_label= scanning_label
         self._scanning_active: bool = False
+
+        self.on_tracking_lost = on_tracking_lost
+        self.on_tracking_restored = on_tracking_restored
+        self._selection_ok_state: bool | None = None
 
         self.camera: Camera | None = None
         self.tracker: FaceTracker | None = None
@@ -77,20 +83,25 @@ class CameraController:
 
     @property
     def stabilized(self) -> bool:
-        return self._stabilization_state == "stabilized" 
+        return self._stabilization_state == "stabilized"
+
+    def check_ready(self, action: str) -> bool:
+        if not self.face_detected:
+            print(f"Cannot {action}: face not detected")
+            return False
+        if not self.stabilized:
+            print(f"Cannot {action}: head not stabilized")
+            return False
+        return True
 
     def start_scanning(self) -> bool:
-        if self.face_detected and self.stabilized:
-            self._scanning_active = True
-            if self.scanning_label is not None:
-                self.scanning_label.show()
-            return True
 
-        if not self.face_detected:
-            print("Can not start scanning: face not detected")
-        if not self.stabilized:
-            print("Can not start scanning: head is not stabilized")
-        return False
+        if not self.check_ready("start scanning"):
+            return False
+        self._scanning_active = True
+        if self.scanning_label is not None:
+            self.scanning_label.show()
+        return True
 
 
     def _set_face_status(self, face_found: bool) -> None:
@@ -119,11 +130,11 @@ class CameraController:
                 self.stabilization_label.hide()
             if self.head_not_stabilized_label is not None:
                 self.head_not_stabilized_label.show()
-        else:  # "hidden"
+        else: 
             if self.stabilization_label is not None:
                 self.stabilization_label.hide()
             if self.head_not_stabilized_label is not None:
-                self.head_not_stabilized_label.hide()       
+                self.head_not_stabilized_label.hide()
 
     def start(self) -> None:
         if self.camera is not None:
@@ -201,7 +212,7 @@ class CameraController:
             if distance <= STABILIZATION_TOLERANCE_PX:
                 self._set_stabilization_status("stabilized")
             else:
-                self._set_stabilization_status("not_stabilized")  
+                self._set_stabilization_status("not_stabilized")
 
         else:
             self._set_face_status(False)
@@ -215,6 +226,17 @@ class CameraController:
             if self.scanning_label is not None:
                 self.scanning_label.hide()
             print("Scanning Paused")
+
+        
+        selection_ok = self.face_detected and self.stabilized
+        if self._selection_ok_state is not None:
+            if self._selection_ok_state and not selection_ok:
+                if self.on_tracking_lost is not None:
+                    self.on_tracking_lost()
+            elif not self._selection_ok_state and selection_ok:
+                if self.on_tracking_restored is not None:
+                    self.on_tracking_restored()
+        self._selection_ok_state = selection_ok
 
         image = QImage(rgb_frame.data, w, h, ch * w, QImage.Format_RGB888)
         self.video_label.setPixmap(QPixmap.fromImage(image))

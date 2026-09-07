@@ -1,11 +1,12 @@
 import sys
-from PySide6.QtCore import Qt 
-from PySide6.QtWidgets import QApplication, QLabel, QMainWindow  
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QLabel, QMainWindow
 from ui.mainwindow_ui import Ui_MainWindow
 from controllers.tooth_chart_controller import ToothChartController
 from controllers.tooth_info_controller import ToothInfoController
 from controllers.camera_controller import CameraController
 from controllers.tooth_target_controller import ToothTargetController
+from controllers.motion_control_controller import MotionControlController
 from core.models import HeadPosition
 
 
@@ -48,6 +49,7 @@ class ControlPanel(QMainWindow):
             on_tooth_selected=self.on_tooth_selected,
             can_select=self.can_select_tooth,
         )
+        self.motion_control = MotionControlController(self.ui.motionControl)
 
         self.camera = CameraController(
             parent_frame=self.ui.rightTopPanel,
@@ -56,8 +58,8 @@ class ControlPanel(QMainWindow):
             stabilization_successful_label=self.ui.stabilizationSuccessfulLabel,
             head_not_stabilized_label=self.ui.headIsNotStabilizedLabel,
             scanning_label=self.ui.scanningLabel,
-            on_tracking_lost=self.on_tracking_lost,          
-            on_tracking_restored=self.on_tracking_restored,  
+            on_tracking_lost=self.on_tracking_lost,
+            on_tracking_restored=self.on_tracking_restored,
         )
         self.camera.start()
 

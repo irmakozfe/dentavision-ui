@@ -5,12 +5,11 @@ import math
 import mediapipe as mp
 from PySide6.QtCore import QTimer
 from PySide6.QtGui import QImage, QPixmap
-
 from ui.rounded_video_label import RoundedVideoLabel
 from vision.camera import Camera
 from vision.face_tracker import FaceTracker
 from ui.rounded_video_label import RoundedVideoLabel, RED_DOT_Y_AXIS
-from vision.head_pose import estimate_head_position, estimate_head_orientation  # CHANGED: new import
+from vision.head_pose import estimate_head_position, estimate_head_orientation  
 
 
 TEAL_RGB = (20, 70, 190)
@@ -30,7 +29,7 @@ FACE_NOT_FOUND_TEXT = "●  FACE NOT FOUND"
 FACE_DETECTED_STYLE = "color: #11AC00; font-weight: 600; font-size: 11px;"
 FACE_NOT_FOUND_STYLE = "color: #C83C3C; font-weight: 600; font-size: 11px;"
 
-STABILIZATION_TOLERANCE_PX = 15
+STABILIZATION_TOLERANCE_PX = 30
 
 class CameraController:
 
@@ -112,6 +111,9 @@ class CameraController:
             self.scanning_label.show()
         return True
 
+    def pause_scanning(self) -> None:
+        self._scanning_active = False
+
 
     def _set_face_status(self, face_found: bool) -> None:
         if self.face_status_label is None or self._face_detected_state == face_found:
@@ -139,7 +141,7 @@ class CameraController:
                 self.stabilization_label.hide()
             if self.head_not_stabilized_label is not None:
                 self.head_not_stabilized_label.show()
-        else:  # "hidden"
+        else:  
             if self.stabilization_label is not None:
                 self.stabilization_label.hide()
             if self.head_not_stabilized_label is not None:

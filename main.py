@@ -30,6 +30,10 @@ START_BUTTON_STYLE = """
     }
 """
 
+SCANNING_LABEL_STYLE = "color: #11AC00; font-weight: 600; font-size: 11px;"
+PAUSED_LABEL_STYLE = "color: #C83C3C; font-weight: 600; font-size: 11px;"
+
+
 class ControlPanel(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -40,11 +44,12 @@ class ControlPanel(QMainWindow):
         self.ui.stabilizationSuccessfulLabel.hide()
         self.ui.scanningLabel.hide()
         self.ui.headIsNotStabilizedLabel.hide()
-        self.ui.jointsAreMovingLabel.hide() 
+        self.ui.jointsAreMovingLabel.hide()  
 
         self.ui.startButton.clicked.connect(self.on_start_clicked)
-        self.ui.startButton.setStyleSheet(START_BUTTON_STYLE)
-        self._scan_ready = False
+        self.ui.startButton.setStyleSheet(START_BUTTON_STYLE)  
+
+        self._phase = "idle"
 
         self.stabilization_error_label = QLabel("STABILIZATION ERROR", self.ui.centerPanel)
         self.stabilization_error_label.setAlignment(Qt.AlignCenter)
@@ -90,20 +95,34 @@ class ControlPanel(QMainWindow):
         self.camera.start()
 
     def on_start_clicked(self):
-        if not self._scan_ready:
+        if self._phase == "idle":
             if self.tooth_chart.selected_tooth is None:
                 print("Cannot start: no tooth selected")
                 return
             if not self.camera.check_ready("start"):
                 return
-            self.ui.jointsAreMovingLabel.show()  
+            print("Joints are moving...")
+            self.ui.jointsAreMovingLabel.show()
             self.ui.startButton.setText("Scan")
-            self._scan_ready = True
-        else:
-            self.ui.jointsAreMovingLabel.hide()  
+            self._phase = "aligning"
+
+        elif self._phase in ("aligning", "paused"):
+            self.ui.jointsAreMovingLabel.hide()
+            self.ui.motionControl.setEnabled(False) 
+            self.ui.scanningLabel.setText("● SCANNING...")
+            self.ui.scanningLabel.setStyleSheet(SCANNING_LABEL_STYLE)
             self.camera.start_scanning()
-            self.ui.startButton.setText("Start")
-            self._scan_ready = False
+            self.ui.startButton.setText("Pause")
+            self._phase = "scanning"
+
+        elif self._phase == "scanning":
+            print("Scanning paused for joint re-calibration")
+            self.camera.pause_scanning()
+            self.ui.motionControl.setEnabled(True) 
+            self.ui.scanningLabel.setText("● PAUSED")
+            self.ui.scanningLabel.setStyleSheet(PAUSED_LABEL_STYLE)
+            self.ui.startButton.setText("Scan")
+            self._phase = "paused"
 
     def can_select_tooth(self) -> bool:
         return self.camera.check_ready("select tooth")
@@ -118,23 +137,39 @@ class ControlPanel(QMainWindow):
 
     def _on_head_position_updated(self):
         tooth = self.tooth_chart.selected_tooth
-        if tooth is not None:
+
+        if tooth is not None and self.camera.stabilized:
             self.tooth_target.show_target_for(tooth)
             self.tooth_target.show_orientation(
                 self.head_position.rx, self.head_position.ry, self.head_position.rz
             )
 
     def on_tracking_lost(self):
+        print("Tracking lost")
 
-        print("Tracking lost: no tooth selection")
+        if self._phase == "scanning":
+            print("Stabilization lost during scan — pausing automatically")
+            self.camera.pause_scanning()
+            self.ui.motionControl.setEnabled(True)
+            self.ui.scanningLabel.setText("● PAUSED")
+            self.ui.scanningLabel.setStyleSheet(PAUSED_LABEL_STYLE)
+            self.ui.startButton.setText("Scan")
+            self._phase = "paused"
+            self.stabilization_error_label.show()
+            self.ui.startButton.setEnabled(False)
+            self.tooth_target.clear()
+            return
+
         self.tooth_chart.clear_selection()
         self.tooth_info.clear()
         self.tooth_target.clear()
         self.stabilization_error_label.show()
         self.ui.startButton.setEnabled(False)
+
         self.ui.startButton.setText("Start")
         self.ui.jointsAreMovingLabel.hide()
-        self._scan_ready = False
+        self.ui.motionControl.setEnabled(True)
+        self._phase = "idle"
 
     def on_tracking_restored(self):
         self.stabilization_error_label.hide()

@@ -1,4 +1,4 @@
-# dentavision-ui
+# DentaVision Control Panel UI
 A medical touchscreen UI for automated dental scanning with a robotic arm.
 
 ## Tech Stack 

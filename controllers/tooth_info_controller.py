@@ -13,7 +13,7 @@ class ToothInfoController:
     def __init__(self, ui):
         self._empty_widgets = [ui.toothIconLabel, ui.noToothSelected, ui.selectATooth]
 
-        icon_path = PROJECT_ROOT / "tooth_circle.svg"
+        icon_path = PROJECT_ROOT / "assets/tooth_circle.svg"
         ui.toothIconLabel.setPixmap(QPixmap(str(icon_path)))
 
         self.badge = SelectedToothBadge(ui.leftPanel)

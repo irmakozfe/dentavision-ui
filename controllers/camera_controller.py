@@ -10,12 +10,16 @@ from ui.rounded_video_label import RoundedVideoLabel
 from vision.camera import Camera
 from vision.face_tracker import FaceTracker
 from ui.rounded_video_label import RoundedVideoLabel, RED_DOT_Y_AXIS
+from vision.head_pose import estimate_head_position, estimate_head_orientation  # CHANGED: new import
 
 
 TEAL_RGB = (20, 70, 190)
 
 MOUTH_LANDMARK_IDS = sorted({idx for pair in mp.solutions.face_mesh.FACEMESH_LIPS for idx in pair})
 MOUTH_BOX_PADDING = 6
+
+MOUTH_LEFT_CORNER_IDX = 61
+MOUTH_RIGHT_CORNER_IDX = 291
 
 FACE_LINE_THICKNESS = 3
 MOUTH_LINE_THICKNESS = 3
@@ -26,7 +30,7 @@ FACE_NOT_FOUND_TEXT = "●  FACE NOT FOUND"
 FACE_DETECTED_STYLE = "color: #11AC00; font-weight: 600; font-size: 11px;"
 FACE_NOT_FOUND_STYLE = "color: #C83C3C; font-weight: 600; font-size: 11px;"
 
-STABILIZATION_TOLERANCE_PX = 30
+STABILIZATION_TOLERANCE_PX = 15
 
 class CameraController:
 
@@ -40,6 +44,8 @@ class CameraController:
             scanning_label=None,
             on_tracking_lost=None,       
             on_tracking_restored=None,   
+            head_position=None,             
+            on_head_position_updated=None,  
             interval_ms: int = 30
         ):
         self.video_label = RoundedVideoLabel(radius=14, parent=parent_frame)
@@ -58,6 +64,9 @@ class CameraController:
         self.on_tracking_lost = on_tracking_lost
         self.on_tracking_restored = on_tracking_restored
         self._selection_ok_state: bool | None = None
+
+        self.head_position = head_position
+        self.on_head_position_updated = on_head_position_updated
 
         self.camera: Camera | None = None
         self.tracker: FaceTracker | None = None
@@ -130,7 +139,7 @@ class CameraController:
                 self.stabilization_label.hide()
             if self.head_not_stabilized_label is not None:
                 self.head_not_stabilized_label.show()
-        else: 
+        else:  # "hidden"
             if self.stabilization_label is not None:
                 self.stabilization_label.hide()
             if self.head_not_stabilized_label is not None:
@@ -214,9 +223,36 @@ class CameraController:
             else:
                 self._set_stabilization_status("not_stabilized")
 
+            mouth_width_px = mouth_x_max - mouth_x_min
+            if self.head_position is not None and mouth_width_px > 0:
+                mouth_left_x = landmarks.landmark[MOUTH_LEFT_CORNER_IDX].x * w
+                mouth_left_y = landmarks.landmark[MOUTH_LEFT_CORNER_IDX].y * h
+                mouth_right_x = landmarks.landmark[MOUTH_RIGHT_CORNER_IDX].x * w
+                mouth_right_y = landmarks.landmark[MOUTH_RIGHT_CORNER_IDX].y * h
+
+                x_mm, y_mm = estimate_head_position(
+                    mouth_mid_x, mouth_mid_y, target_x, target_y, mouth_width_px
+                )
+                rx, ry, rz = estimate_head_orientation(
+                    mouth_left_x, mouth_left_y, mouth_right_x, mouth_right_y,
+                    mouth_mid_x, mouth_mid_y, x_min, x_max, y_min, y_max,
+                )
+
+                self.head_position.detected = True
+                self.head_position.x = x_mm
+                self.head_position.y = y_mm
+                self.head_position.rx = rx
+                self.head_position.ry = ry
+                self.head_position.rz = rz
+
+                if self.on_head_position_updated is not None:
+                    self.on_head_position_updated()
+
         else:
             self._set_face_status(False)
             self._set_stabilization_status("hidden")
+            if self.head_position is not None:
+                self.head_position.detected = False
             cv2.putText(rgb_frame, "Face not found", (20, 40),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, TEAL_RGB, FACE_LINE_THICKNESS)
 
@@ -227,7 +263,6 @@ class CameraController:
                 self.scanning_label.hide()
             print("Scanning Paused")
 
-        
         selection_ok = self.face_detected and self.stabilized
         if self._selection_ok_state is not None:
             if self._selection_ok_state and not selection_ok:

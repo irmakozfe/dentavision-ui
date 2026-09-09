@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
 "")
         self.toothTargetFrame = QFrame(self.leftPanel)
         self.toothTargetFrame.setObjectName(u"toothTargetFrame")
-        self.toothTargetFrame.setGeometry(QRect(0, 130, 281, 151))
+        self.toothTargetFrame.setGeometry(QRect(0, 130, 281, 161))
         self.toothTargetFrame.setFrameShape(QFrame.Shape.StyledPanel)
         self.toothTargetFrame.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout = QVBoxLayout(self.toothTargetFrame)
@@ -135,12 +135,14 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2 = QGridLayout()
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.gridLayout_2.setContentsMargins(20, -1, 10, -1)
+        self.gridLayout_2.setContentsMargins(0, -1, 10, -1)
         self.Y = QLabel(self.toothTargetFrame)
         self.Y.setObjectName(u"Y")
         self.Y.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
-"font-family: \"Helvetica\";")
+"font-family: \"Helvetica\";\n"
+"")
+        self.Y.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_2.addWidget(self.Y, 0, 1, 1, 1)
 
@@ -149,6 +151,7 @@ class Ui_MainWindow(object):
         self.X.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
+        self.X.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_2.addWidget(self.X, 0, 0, 1, 1)
 
@@ -157,24 +160,28 @@ class Ui_MainWindow(object):
         self.Z.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
+        self.Z.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_2.addWidget(self.Z, 0, 2, 1, 1)
 
         self.labelX = QLabel(self.toothTargetFrame)
         self.labelX.setObjectName(u"labelX")
         self.labelX.setStyleSheet(u"color: #0E7772")
+        self.labelX.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_2.addWidget(self.labelX, 1, 0, 1, 1)
 
         self.labelY = QLabel(self.toothTargetFrame)
         self.labelY.setObjectName(u"labelY")
         self.labelY.setStyleSheet(u"color: #0E7772")
+        self.labelY.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_2.addWidget(self.labelY, 1, 1, 1, 1)
 
         self.labelZ = QLabel(self.toothTargetFrame)
         self.labelZ.setObjectName(u"labelZ")
         self.labelZ.setStyleSheet(u"color: #0E7772")
+        self.labelZ.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_2.addWidget(self.labelZ, 1, 2, 1, 1)
 
@@ -183,12 +190,13 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3 = QGridLayout()
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.gridLayout_3.setContentsMargins(20, -1, 10, -1)
+        self.gridLayout_3.setContentsMargins(0, -1, 10, -1)
         self.RY = QLabel(self.toothTargetFrame)
         self.RY.setObjectName(u"RY")
         self.RY.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
+        self.RY.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_3.addWidget(self.RY, 0, 1, 1, 1)
 
@@ -197,6 +205,7 @@ class Ui_MainWindow(object):
         self.RX.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
+        self.RX.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_3.addWidget(self.RX, 0, 0, 1, 1)
 
@@ -205,24 +214,28 @@ class Ui_MainWindow(object):
         self.RZ.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
+        self.RZ.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_3.addWidget(self.RZ, 0, 2, 1, 1)
 
         self.labelX_2 = QLabel(self.toothTargetFrame)
         self.labelX_2.setObjectName(u"labelX_2")
         self.labelX_2.setStyleSheet(u"color: #0E7772")
+        self.labelX_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_3.addWidget(self.labelX_2, 1, 0, 1, 1)
 
         self.labelY_2 = QLabel(self.toothTargetFrame)
         self.labelY_2.setObjectName(u"labelY_2")
         self.labelY_2.setStyleSheet(u"color: #0E7772")
+        self.labelY_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_3.addWidget(self.labelY_2, 1, 1, 1, 1)
 
         self.labelZ_2 = QLabel(self.toothTargetFrame)
         self.labelZ_2.setObjectName(u"labelZ_2")
         self.labelZ_2.setStyleSheet(u"color: #0E7772")
+        self.labelZ_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_3.addWidget(self.labelZ_2, 1, 2, 1, 1)
 
@@ -355,7 +368,7 @@ class Ui_MainWindow(object):
         self.labelX_2.setText(QCoreApplication.translate("MainWindow", u"-", None))
         self.labelY_2.setText(QCoreApplication.translate("MainWindow", u"-", None))
         self.labelZ_2.setText(QCoreApplication.translate("MainWindow", u"-", None))
-        self.toothTarget_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">MOTION CONTROL</span></p></body></html>", None))
+        self.toothTarget_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">JOINT CONTROL</span></p></body></html>", None))
         self.maxilla.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MAXILLA</p><p><br/></p></body></html>", None))
         self.mandibula.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MANDIBULA</p></body></html>", None))
         self.headPositionLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">HEAD POSITION</span></p></body></html>", None))

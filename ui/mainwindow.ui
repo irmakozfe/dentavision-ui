@@ -227,7 +227,7 @@ color: #455360;
        <x>0</x>
        <y>130</y>
        <width>281</width>
-       <height>151</height>
+       <height>161</height>
       </rect>
      </property>
      <property name="frameShape">
@@ -252,7 +252,7 @@ font-family: &quot;Helvetica&quot;;</string>
       <item>
        <layout class="QGridLayout" name="gridLayout_2">
         <property name="leftMargin">
-         <number>20</number>
+         <number>0</number>
         </property>
         <property name="rightMargin">
          <number>10</number>
@@ -262,10 +262,14 @@ font-family: &quot;Helvetica&quot;;</string>
           <property name="styleSheet">
            <string notr="true">color: #768599;
 font-weight: 450;
-font-family: &quot;Helvetica&quot;;</string>
+font-family: &quot;Helvetica&quot;;
+</string>
           </property>
           <property name="text">
            <string>Y</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -279,6 +283,9 @@ font-family: &quot;Helvetica&quot;;</string>
           <property name="text">
            <string>X</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item row="0" column="2">
@@ -291,6 +298,9 @@ font-family: &quot;Helvetica&quot;;</string>
           <property name="text">
            <string>Z</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item row="1" column="0">
@@ -300,6 +310,9 @@ font-family: &quot;Helvetica&quot;;</string>
           </property>
           <property name="text">
            <string>-</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -311,6 +324,9 @@ font-family: &quot;Helvetica&quot;;</string>
           <property name="text">
            <string>-</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item row="1" column="2">
@@ -321,6 +337,9 @@ font-family: &quot;Helvetica&quot;;</string>
           <property name="text">
            <string>-</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
          </widget>
         </item>
        </layout>
@@ -328,7 +347,7 @@ font-family: &quot;Helvetica&quot;;</string>
       <item>
        <layout class="QGridLayout" name="gridLayout_3">
         <property name="leftMargin">
-         <number>20</number>
+         <number>0</number>
         </property>
         <property name="rightMargin">
          <number>10</number>
@@ -343,6 +362,9 @@ font-family: &quot;Helvetica&quot;;</string>
           <property name="text">
            <string>RY</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item row="0" column="0">
@@ -354,6 +376,9 @@ font-family: &quot;Helvetica&quot;;</string>
           </property>
           <property name="text">
            <string>RX</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -367,6 +392,9 @@ font-family: &quot;Helvetica&quot;;</string>
           <property name="text">
            <string>RZ</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item row="1" column="0">
@@ -376,6 +404,9 @@ font-family: &quot;Helvetica&quot;;</string>
           </property>
           <property name="text">
            <string>-</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -387,6 +418,9 @@ font-family: &quot;Helvetica&quot;;</string>
           <property name="text">
            <string>-</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item row="1" column="2">
@@ -396,6 +430,9 @@ font-family: &quot;Helvetica&quot;;</string>
           </property>
           <property name="text">
            <string>-</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -433,7 +470,7 @@ font-weight: 450;
 font-family: &quot;Helvetica&quot;;</string>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;MOTION CONTROL&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;JOINT CONTROL&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>

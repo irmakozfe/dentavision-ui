@@ -1,8 +1,9 @@
-#Tooth numbers (FDI notation) and names
+#Tooth numbers (FDI notation), names, and Tooth Target offsets
 import math
+
 UPPER_TEETH = [18, 17, 16, 15, 14, 13, 12, 11, 21, 22, 23, 24, 25, 26, 27, 28]
 LOWER_TEETH = [48, 47, 46, 45, 44, 43, 42, 41, 31, 32, 33, 34, 35, 36, 37, 38]
- 
+
 TOOTH_NAMES = {
     18: "Upper Right Third Molar", 17: "Upper Right Second Molar", 16: "Upper Right First Molar",
     15: "Upper Right Second Premolar", 14: "Upper Right First Premolar", 13: "Upper Right Canine",
@@ -18,12 +19,13 @@ TOOTH_NAMES = {
     37: "Lower Left Second Molar", 38: "Lower Left Third Molar",
 }
 
+ARCH_WIDTH_MM = 45.0   
+ARCH_HEIGHT_MM = 8.0   
+ARCH_DEPTH_MM = 20.0   
 
-ARCH_WIDTH_MM = 45.0   # left-right half-width of the arch at its widest tooth
-ARCH_HEIGHT_MM = 8.0   # how far the curve rises/falls from the centerline
-
-_UPPER_ANGLE_RANGE = (195,345)
+_UPPER_ANGLE_RANGE = (195, 345)
 _LOWER_ANGLE_RANGE = (165, 15)
+
 
 def _arc_offsets(tooth_numbers: list[int], angle_range: tuple[float, float], y_sign: int) -> dict[int, tuple[float, float]]:
     start_angle, end_angle = angle_range
@@ -36,14 +38,28 @@ def _arc_offsets(tooth_numbers: list[int], angle_range: tuple[float, float], y_s
         dy = y_sign * ARCH_HEIGHT_MM * abs(math.sin(angle_rad))
         offsets[tooth_number] = (dx, dy)
     return offsets
- 
- 
+
+
+def _depth_offsets(offsets_2d: dict[int, tuple[float, float]]) -> dict[int, float]:
+
+    abs_dx_values = [abs(dx) for dx, _dy in offsets_2d.values()]
+    min_abs_dx, max_abs_dx = min(abs_dx_values), max(abs_dx_values)
+    span = max_abs_dx - min_abs_dx
+    return {
+        tooth_number: ARCH_DEPTH_MM * (abs(dx) - min_abs_dx) / span
+        for tooth_number, (dx, _dy) in offsets_2d.items()
+    }
+
+
+_upper_offsets_2d = _arc_offsets(UPPER_TEETH, _UPPER_ANGLE_RANGE, y_sign=+1)
+_lower_offsets_2d = _arc_offsets(LOWER_TEETH, _LOWER_ANGLE_RANGE, y_sign=-1)
+
 TOOTH_OFFSETS_MM: dict[int, tuple[float, float]] = {
-    **_arc_offsets(UPPER_TEETH, _UPPER_ANGLE_RANGE, y_sign=+1),
-    **_arc_offsets(LOWER_TEETH, _LOWER_ANGLE_RANGE, y_sign=-1),
+    **_upper_offsets_2d,
+    **_lower_offsets_2d,
 }
- 
 
-
-
-
+TOOTH_DEPTH_OFFSETS_MM: dict[int, float] = {
+    **_depth_offsets(_upper_offsets_2d),
+    **_depth_offsets(_lower_offsets_2d),
+}

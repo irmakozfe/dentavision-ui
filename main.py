@@ -60,6 +60,8 @@ class ControlPanel(QMainWindow):
             scanning_label=self.ui.scanningLabel,
             on_tracking_lost=self.on_tracking_lost,
             on_tracking_restored=self.on_tracking_restored,
+            head_position=self.head_position,                        # CHANGED
+            on_head_position_updated=self._on_head_position_updated,  # CHANGED
         )
         self.camera.start()
 
@@ -74,6 +76,17 @@ class ControlPanel(QMainWindow):
         print(f"Tooth {tooth.number} is selected")
         self.tooth_info.show_tooth(tooth)
         self.tooth_target.show_target_for(tooth)
+        self.tooth_target.show_orientation(  # CHANGED
+            self.head_position.rx, self.head_position.ry, self.head_position.rz
+        )
+
+    def _on_head_position_updated(self):
+        tooth = self.tooth_chart.selected_tooth
+        if tooth is not None:
+            self.tooth_target.show_target_for(tooth)
+            self.tooth_target.show_orientation(
+                self.head_position.rx, self.head_position.ry, self.head_position.rz
+            )
 
     def on_tracking_lost(self):
 

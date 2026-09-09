@@ -320,16 +320,22 @@ class Ui_MainWindow(object):
         self.stabilizationSuccessfulLabel.setStyleSheet(u"   color: #11AC00;\n"
 "   font-weight: 600;\n"
 "   font-size: 11px;")
-        self.scanningLabel = QLabel(self.leftBottomPanel)
-        self.scanningLabel.setObjectName(u"scanningLabel")
-        self.scanningLabel.setGeometry(QRect(20, 80, 211, 16))
-        self.scanningLabel.setStyleSheet(u"   color: #11AC00;\n"
+        self.jointsAreMovingLabel = QLabel(self.leftBottomPanel)
+        self.jointsAreMovingLabel.setObjectName(u"jointsAreMovingLabel")
+        self.jointsAreMovingLabel.setGeometry(QRect(20, 80, 211, 16))
+        self.jointsAreMovingLabel.setStyleSheet(u"   color: #11AC00;\n"
 "   font-weight: 600;\n"
 "   font-size: 11px;")
         self.headIsNotStabilizedLabel = QLabel(self.leftBottomPanel)
         self.headIsNotStabilizedLabel.setObjectName(u"headIsNotStabilizedLabel")
         self.headIsNotStabilizedLabel.setGeometry(QRect(20, 60, 211, 16))
         self.headIsNotStabilizedLabel.setStyleSheet(u"   color: #FCAD09;\n"
+"   font-weight: 600;\n"
+"   font-size: 11px;")
+        self.scanningLabel = QLabel(self.leftBottomPanel)
+        self.scanningLabel.setObjectName(u"scanningLabel")
+        self.scanningLabel.setGeometry(QRect(20, 80, 211, 16))
+        self.scanningLabel.setStyleSheet(u"   color: #11AC00;\n"
 "   font-weight: 600;\n"
 "   font-size: 11px;")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -375,7 +381,8 @@ class Ui_MainWindow(object):
         self.statusLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">STATUS</span></p></body></html>", None))
         self.faceDetectedLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf FACE DETECTED</span></p></body></html>", None))
         self.stabilizationSuccessfulLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf STABILIZATION SUCCESSFUL</span></p></body></html>", None))
-        self.scanningLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf SCANNING...</span></p></body></html>", None))
+        self.jointsAreMovingLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf JOINTS ARE MOVING</span></p></body></html>", None))
         self.headIsNotStabilizedLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf HEAD IS NOT STABILIZED</span></p></body></html>", None))
+        self.scanningLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf SCANNING...</span></p></body></html>", None))
     # retranslateUi
 

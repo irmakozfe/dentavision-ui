@@ -9,6 +9,26 @@ from controllers.tooth_target_controller import ToothTargetController
 from controllers.motion_control_controller import MotionControlController
 from core.models import HeadPosition
 
+START_BUTTON_STYLE = """
+    QPushButton {
+        background-color: #0E7772;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 6px 20px;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #129B93;
+    }
+    QPushButton:pressed {
+        background-color: #0B5F5B;
+    }
+    QPushButton:disabled {
+        background-color: #A9C9C7;
+        color: #F0F0F0;
+    }
+"""
 
 class ControlPanel(QMainWindow):
     def __init__(self):
@@ -20,8 +40,11 @@ class ControlPanel(QMainWindow):
         self.ui.stabilizationSuccessfulLabel.hide()
         self.ui.scanningLabel.hide()
         self.ui.headIsNotStabilizedLabel.hide()
+        self.ui.jointsAreMovingLabel.hide() 
 
         self.ui.startButton.clicked.connect(self.on_start_clicked)
+        self.ui.startButton.setStyleSheet(START_BUTTON_STYLE)
+        self._scan_ready = False
 
         self.stabilization_error_label = QLabel("STABILIZATION ERROR", self.ui.centerPanel)
         self.stabilization_error_label.setAlignment(Qt.AlignCenter)
@@ -49,6 +72,7 @@ class ControlPanel(QMainWindow):
             on_tooth_selected=self.on_tooth_selected,
             can_select=self.can_select_tooth,
         )
+
         self.motion_control = MotionControlController(self.ui.motionControl)
 
         self.camera = CameraController(
@@ -60,14 +84,26 @@ class ControlPanel(QMainWindow):
             scanning_label=self.ui.scanningLabel,
             on_tracking_lost=self.on_tracking_lost,
             on_tracking_restored=self.on_tracking_restored,
-            head_position=self.head_position,                        # CHANGED
-            on_head_position_updated=self._on_head_position_updated,  # CHANGED
+            head_position=self.head_position,                        
+            on_head_position_updated=self._on_head_position_updated,  
         )
         self.camera.start()
 
     def on_start_clicked(self):
-        print("Clicked startButton")
-        self.camera.start_scanning()
+        if not self._scan_ready:
+            if self.tooth_chart.selected_tooth is None:
+                print("Cannot start: no tooth selected")
+                return
+            if not self.camera.check_ready("start"):
+                return
+            self.ui.jointsAreMovingLabel.show()  
+            self.ui.startButton.setText("Scan")
+            self._scan_ready = True
+        else:
+            self.ui.jointsAreMovingLabel.hide()  
+            self.camera.start_scanning()
+            self.ui.startButton.setText("Start")
+            self._scan_ready = False
 
     def can_select_tooth(self) -> bool:
         return self.camera.check_ready("select tooth")
@@ -76,7 +112,7 @@ class ControlPanel(QMainWindow):
         print(f"Tooth {tooth.number} is selected")
         self.tooth_info.show_tooth(tooth)
         self.tooth_target.show_target_for(tooth)
-        self.tooth_target.show_orientation(  # CHANGED
+        self.tooth_target.show_orientation(  
             self.head_position.rx, self.head_position.ry, self.head_position.rz
         )
 
@@ -96,6 +132,9 @@ class ControlPanel(QMainWindow):
         self.tooth_target.clear()
         self.stabilization_error_label.show()
         self.ui.startButton.setEnabled(False)
+        self.ui.startButton.setText("Start")
+        self.ui.jointsAreMovingLabel.hide()
+        self._scan_ready = False
 
     def on_tracking_restored(self):
         self.stabilization_error_label.hide()

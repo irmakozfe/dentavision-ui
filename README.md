@@ -5,3 +5,10 @@ A medical touchscreen UI for automated dental scanning with a robotic arm.
 Design: Figma 
 
 Implementation: python, pyside6, Qt Creator
+
+to run:
+
+```bash
+python3 main.py
+```
+

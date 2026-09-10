@@ -26,7 +26,6 @@ class ToothTargetController:
         self.ui.labelX.setText("-")
         self.ui.labelY.setText("-")
         self.ui.labelZ.setText("-")
-        # CHANGED: also reset the orientation labels
         self.ui.labelX_2.setText("-")
         self.ui.labelY_2.setText("-")
         self.ui.labelZ_2.setText("-")

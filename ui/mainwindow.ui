@@ -498,9 +498,9 @@ border-radius: 14px;</string>
     <widget class="QLabel" name="maxilla">
      <property name="geometry">
       <rect>
-       <x>192</x>
+       <x>160</x>
        <y>10</y>
-       <width>61</width>
+       <width>141</width>
        <height>16</height>
       </rect>
      </property>
@@ -510,15 +510,15 @@ font-weight: 450;
 font-family: &quot;Helvetica&quot;;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;MAXILLA&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;MAXILLA (UPPER JAW)&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="mandibula">
      <property name="geometry">
       <rect>
-       <x>182</x>
-       <y>458</y>
-       <width>81</width>
+       <x>160</x>
+       <y>460</y>
+       <width>161</width>
        <height>16</height>
       </rect>
      </property>
@@ -528,7 +528,7 @@ font-weight: 450;
 font-family: &quot;Helvetica&quot;;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;MANDIBULA&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;MANDIBULA (LOWER JAW)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QFrame" name="mouthFrame">

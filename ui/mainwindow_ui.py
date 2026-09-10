@@ -263,13 +263,13 @@ class Ui_MainWindow(object):
         self.centerPanel.setFrameShadow(QFrame.Shadow.Raised)
         self.maxilla = QLabel(self.centerPanel)
         self.maxilla.setObjectName(u"maxilla")
-        self.maxilla.setGeometry(QRect(192, 10, 61, 16))
+        self.maxilla.setGeometry(QRect(160, 10, 141, 16))
         self.maxilla.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
         self.mandibula = QLabel(self.centerPanel)
         self.mandibula.setObjectName(u"mandibula")
-        self.mandibula.setGeometry(QRect(182, 458, 81, 16))
+        self.mandibula.setGeometry(QRect(160, 460, 161, 16))
         self.mandibula.setStyleSheet(u"color: #768599;\n"
 "font-weight: 450;\n"
 "font-family: \"Helvetica\";")
@@ -375,8 +375,8 @@ class Ui_MainWindow(object):
         self.labelY_2.setText(QCoreApplication.translate("MainWindow", u"-", None))
         self.labelZ_2.setText(QCoreApplication.translate("MainWindow", u"-", None))
         self.toothTarget_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">JOINT CONTROL</span></p></body></html>", None))
-        self.maxilla.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MAXILLA</p><p><br/></p></body></html>", None))
-        self.mandibula.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MANDIBULA</p></body></html>", None))
+        self.maxilla.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MAXILLA (UPPER JAW)</p><p><br/></p></body></html>", None))
+        self.mandibula.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>MANDIBULA (LOWER JAW)</p></body></html>", None))
         self.headPositionLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">HEAD POSITION</span></p></body></html>", None))
         self.statusLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-style:italic;\">STATUS</span></p></body></html>", None))
         self.faceDetectedLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">\u25cf FACE DETECTED</span></p></body></html>", None))

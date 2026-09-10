@@ -1,15 +1,15 @@
 import math
 
-REFERENCE_MOUTH_WIDTH_MM = 50.0
-
 def estimate_head_position(
-    mouth_mid_x, mouth_mid_y, target_x, target_y, mouth_width_px
+    mouth_mid_x: float,
+    mouth_mid_y: float,
+    target_x: float,
+    target_y: float,
+    mm_per_pixel: float,
 ) -> tuple[float, float]:
-    if mouth_width_px <= 0:
-        return (0.0, 0.0)
-    mm_per_pixel = REFERENCE_MOUTH_WIDTH_MM / mouth_width_px
     x_mm = (mouth_mid_x - target_x) * mm_per_pixel
     y_mm = (target_y - mouth_mid_y) * mm_per_pixel
+
     return (x_mm, y_mm)
 
 
@@ -29,11 +29,6 @@ def estimate_head_orientation(
     face_y_min: float,
     face_y_max: float,
 ) -> tuple[float, float, float]:
-    """
-    rx = pitch (nod up/down)
-    ry = yaw (turnleft/right)
-    rz = roll (tilt sideways)
-    """
     rz = math.degrees(math.atan2(
         mouth_right_y - mouth_left_y,
         mouth_right_x - mouth_left_x,

@@ -5,11 +5,12 @@ import math
 import mediapipe as mp
 from PySide6.QtCore import QTimer
 from PySide6.QtGui import QImage, QPixmap
+
 from ui.rounded_video_label import RoundedVideoLabel
 from vision.camera import Camera
 from vision.face_tracker import FaceTracker
 from ui.rounded_video_label import RoundedVideoLabel, RED_DOT_Y_AXIS
-from vision.head_pose import estimate_head_position, estimate_head_orientation  
+from vision.head_pose import estimate_head_position, estimate_head_orientation
 
 
 TEAL_RGB = (20, 70, 190)
@@ -29,7 +30,10 @@ FACE_NOT_FOUND_TEXT = "●  FACE NOT FOUND"
 FACE_DETECTED_STYLE = "color: #11AC00; font-weight: 600; font-size: 11px;"
 FACE_NOT_FOUND_STYLE = "color: #C83C3C; font-weight: 600; font-size: 11px;"
 
-STABILIZATION_TOLERANCE_PX = 30
+STABILIZATION_TOLERANCE_PX = 15
+
+CM_PER_PIXEL = 0.025
+MM_PER_PIXEL = CM_PER_PIXEL * 10
 
 class CameraController:
 
@@ -41,10 +45,10 @@ class CameraController:
             stabilization_successful_label=None,
             head_not_stabilized_label=None,
             scanning_label=None,
-            on_tracking_lost=None,       
-            on_tracking_restored=None,   
-            head_position=None,             
-            on_head_position_updated=None,  
+            on_tracking_lost=None,
+            on_tracking_restored=None,
+            head_position=None,
+            on_head_position_updated=None,
             interval_ms: int = 30
         ):
         self.video_label = RoundedVideoLabel(radius=14, parent=parent_frame)
@@ -103,7 +107,6 @@ class CameraController:
         return True
 
     def start_scanning(self) -> bool:
-
         if not self.check_ready("start scanning"):
             return False
         self._scanning_active = True
@@ -141,7 +144,7 @@ class CameraController:
                 self.stabilization_label.hide()
             if self.head_not_stabilized_label is not None:
                 self.head_not_stabilized_label.show()
-        else:  
+        else:
             if self.stabilization_label is not None:
                 self.stabilization_label.hide()
             if self.head_not_stabilized_label is not None:
@@ -226,6 +229,7 @@ class CameraController:
                 self._set_stabilization_status("not_stabilized")
 
             mouth_width_px = mouth_x_max - mouth_x_min
+
             if self.head_position is not None and mouth_width_px > 0:
                 mouth_left_x = landmarks.landmark[MOUTH_LEFT_CORNER_IDX].x * w
                 mouth_left_y = landmarks.landmark[MOUTH_LEFT_CORNER_IDX].y * h
@@ -233,7 +237,7 @@ class CameraController:
                 mouth_right_y = landmarks.landmark[MOUTH_RIGHT_CORNER_IDX].y * h
 
                 x_mm, y_mm = estimate_head_position(
-                    mouth_mid_x, mouth_mid_y, target_x, target_y, mouth_width_px
+                    mouth_mid_x, mouth_mid_y, target_x, target_y, MM_PER_PIXEL
                 )
                 rx, ry, rz = estimate_head_orientation(
                     mouth_left_x, mouth_left_y, mouth_right_x, mouth_right_y,

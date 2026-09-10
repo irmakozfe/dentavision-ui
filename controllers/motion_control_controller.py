@@ -26,11 +26,17 @@ class MotionControlController:
     Z_STEP_MM = 1.0
     ROTATION_STEP_DEG = 5.0
     TOP_OFFSET = 15
+    JOYSTICK_RANGE_MM = 10.0
 
     def __init__(self, motion_control_frame, on_move=None, on_z=None, on_rotate=None):
         self.on_move = on_move
         self.on_z = on_z
         self.on_rotate = on_rotate
+
+        self._base_x = 0.0
+        self._base_y = 0.0
+        self._base_z = 0.0
+        self._base_rotation = {axis: 0.0 for axis in ROTATION_AXES}
 
         self._z = 0.0
         self._rotation = {axis: 0.0 for axis in ROTATION_AXES}
@@ -46,6 +52,12 @@ class MotionControlController:
         self._build_z_control(motion_control_frame)
         for i, axis in enumerate(ROTATION_AXES):
             self._build_rotation_row(motion_control_frame, axis, y=52 + self.TOP_OFFSET + i * 26)
+
+    def set_baseline(self, x: float, y: float, z: float, rx: float, ry: float, rz: float) -> None:
+        self._base_x, self._base_y, self._base_z = x, y, z
+        self._base_rotation = {"rx": rx, "ry": ry, "rz": rz}
+        self._z = 0.0
+        self._rotation = {axis: 0.0 for axis in ROTATION_AXES}
 
     def _button(self, parent, text, x, y, w, h, on_click):
         btn = QPushButton(text, parent)
@@ -74,18 +86,22 @@ class MotionControlController:
         self._button(parent, "+", 214, y, 24, 22, lambda: self._rotate(axis, +1))
 
     def _handle_move(self, x: float, y: float) -> None:
-        print(f"Joystick: x={x:.2f}, y={y:.2f}")
+        actual_x = self._base_x + x * self.JOYSTICK_RANGE_MM
+        actual_y = self._base_y + y * self.JOYSTICK_RANGE_MM
+        print(f"Joystick: x={actual_x:.1f} mm, y={actual_y:.1f} mm")
         if self.on_move is not None:
             self.on_move(x, y)
 
     def _nudge_z(self, direction: int) -> None:
         self._z += direction * self.Z_STEP_MM
-        print(f"Z: {self._z:.1f} mm")
+        actual_z = self._base_z + self._z
+        print(f"Z: {actual_z:.1f} mm")
         if self.on_z is not None:
-            self.on_z(self._z)
+            self.on_z(actual_z)
 
     def _rotate(self, axis: str, direction: int) -> None:
         self._rotation[axis] += direction * self.ROTATION_STEP_DEG
-        print(f"{axis.upper()}: {self._rotation[axis]:.1f}°")
+        actual = self._base_rotation[axis] + self._rotation[axis]
+        print(f"{axis.upper()}: {actual:.1f}°")
         if self.on_rotate is not None:
-            self.on_rotate(axis, self._rotation[axis])
+            self.on_rotate(axis, actual)

@@ -40,15 +40,13 @@ class ControlPanel(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # rightBottomPanel Status temporary hidden
         self.ui.stabilizationSuccessfulLabel.hide()
         self.ui.scanningLabel.hide()
         self.ui.headIsNotStabilizedLabel.hide()
-        self.ui.jointsAreMovingLabel.hide()  
+        self.ui.jointsAreMovingLabel.hide()
 
         self.ui.startButton.clicked.connect(self.on_start_clicked)
-        self.ui.startButton.setStyleSheet(START_BUTTON_STYLE)  
-
+        self.ui.startButton.setStyleSheet(START_BUTTON_STYLE)
         self._phase = "idle"
 
         self.stabilization_error_label = QLabel("STABILIZATION ERROR", self.ui.centerPanel)
@@ -77,7 +75,6 @@ class ControlPanel(QMainWindow):
             on_tooth_selected=self.on_tooth_selected,
             can_select=self.can_select_tooth,
         )
-
         self.motion_control = MotionControlController(self.ui.motionControl)
 
         self.camera = CameraController(
@@ -89,8 +86,8 @@ class ControlPanel(QMainWindow):
             scanning_label=self.ui.scanningLabel,
             on_tracking_lost=self.on_tracking_lost,
             on_tracking_restored=self.on_tracking_restored,
-            head_position=self.head_position,                        
-            on_head_position_updated=self._on_head_position_updated,  
+            head_position=self.head_position,
+            on_head_position_updated=self._on_head_position_updated,
         )
         self.camera.start()
 
@@ -101,6 +98,12 @@ class ControlPanel(QMainWindow):
                 return
             if not self.camera.check_ready("start"):
                 return
+            tooth = self.tooth_chart.selected_tooth
+            x, y, z = self.tooth_target.show_target_for(tooth)
+            self.motion_control.set_baseline(
+                x, y, z,
+                self.head_position.rx, self.head_position.ry, self.head_position.rz,
+            )
             print("Joints are moving...")
             self.ui.jointsAreMovingLabel.show()
             self.ui.startButton.setText("Scan")
@@ -108,7 +111,7 @@ class ControlPanel(QMainWindow):
 
         elif self._phase in ("aligning", "paused"):
             self.ui.jointsAreMovingLabel.hide()
-            self.ui.motionControl.setEnabled(False) 
+            self.ui.motionControl.setEnabled(False)
             self.ui.scanningLabel.setText("● SCANNING...")
             self.ui.scanningLabel.setStyleSheet(SCANNING_LABEL_STYLE)
             self.camera.start_scanning()
@@ -118,7 +121,7 @@ class ControlPanel(QMainWindow):
         elif self._phase == "scanning":
             print("Scanning paused for joint re-calibration")
             self.camera.pause_scanning()
-            self.ui.motionControl.setEnabled(True) 
+            self.ui.motionControl.setEnabled(True)
             self.ui.scanningLabel.setText("● PAUSED")
             self.ui.scanningLabel.setStyleSheet(PAUSED_LABEL_STYLE)
             self.ui.startButton.setText("Scan")
@@ -131,13 +134,12 @@ class ControlPanel(QMainWindow):
         print(f"Tooth {tooth.number} is selected")
         self.tooth_info.show_tooth(tooth)
         self.tooth_target.show_target_for(tooth)
-        self.tooth_target.show_orientation(  
+        self.tooth_target.show_orientation(
             self.head_position.rx, self.head_position.ry, self.head_position.rz
         )
 
     def _on_head_position_updated(self):
         tooth = self.tooth_chart.selected_tooth
-
         if tooth is not None and self.camera.stabilized:
             self.tooth_target.show_target_for(tooth)
             self.tooth_target.show_orientation(
@@ -165,7 +167,6 @@ class ControlPanel(QMainWindow):
         self.tooth_target.clear()
         self.stabilization_error_label.show()
         self.ui.startButton.setEnabled(False)
-
         self.ui.startButton.setText("Start")
         self.ui.jointsAreMovingLabel.hide()
         self.ui.motionControl.setEnabled(True)

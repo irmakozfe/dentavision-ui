@@ -1,11 +1,3 @@
-"""A transparent, circular joystick for jogging X/Y motion.
-
-Drag the knob anywhere inside the circular track; while dragging it
-reports a normalized (x, y) in [-1, 1] via on_move(x, y), and snaps
-back to (0, 0) on release — spring-loaded, like a real jog joystick,
-not a position you set once and leave.
-"""
-
 from __future__ import annotations
 
 import math

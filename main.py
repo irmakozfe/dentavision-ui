@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QTimer
 from PySide6.QtWidgets import QApplication, QLabel, QMainWindow
 from ui.mainwindow_ui import Ui_MainWindow
 from controllers.tooth_chart_controller import ToothChartController
@@ -33,6 +33,14 @@ START_BUTTON_STYLE = """
 SCANNING_LABEL_STYLE = "color: #11AC00; font-weight: 600; font-size: 11px;"
 PAUSED_LABEL_STYLE = "color: #C83C3C; font-weight: 600; font-size: 11px;"
 
+ALIGNING_TEXT = "● JOINTS ARE MOVING"
+TARGET_REACHED_TEXT = "● TARGET REACHED"
+SCANNING_ACTIVE_TEXT = "● SCANNING..."
+SCANNING_SUCCESSFUL_TEXT = "● SCANNING SUCCESSFUL"
+PAUSED_TEXT = "● PAUSED"
+
+STATUS_LABEL_DELAY_MS = 2000
+
 
 class ControlPanel(QMainWindow):
     def __init__(self):
@@ -45,9 +53,18 @@ class ControlPanel(QMainWindow):
         self.ui.headIsNotStabilizedLabel.hide()
         self.ui.jointsAreMovingLabel.hide()
 
+        self.target_reached_timer = QTimer(self)
+        self.target_reached_timer.setSingleShot(True)
+        self.target_reached_timer.timeout.connect(self._show_target_reached)
+
+        self.scanning_successful_timer = QTimer(self)
+        self.scanning_successful_timer.setSingleShot(True)
+        self.scanning_successful_timer.timeout.connect(self._show_scanning_successful)
+
         self.ui.startButton.clicked.connect(self.on_start_clicked)
         self.ui.startButton.setStyleSheet(START_BUTTON_STYLE)
         self._phase = "idle"
+        self._target_reached = False
 
         self.stabilization_error_label = QLabel("STABILIZATION ERROR", self.ui.centerPanel)
         self.stabilization_error_label.setAlignment(Qt.AlignCenter)
@@ -105,27 +122,46 @@ class ControlPanel(QMainWindow):
                 self.head_position.rx, self.head_position.ry, self.head_position.rz,
             )
             print("Joints are moving...")
+            self._target_reached = False
+            self.ui.jointsAreMovingLabel.setText(ALIGNING_TEXT)
             self.ui.jointsAreMovingLabel.show()
+            self.target_reached_timer.start(STATUS_LABEL_DELAY_MS)
             self.ui.startButton.setText("Scan")
             self._phase = "aligning"
 
+        elif self._phase == "aligning" and not self._target_reached:
+            print("Cannot scan yet: target not reached")
+
         elif self._phase in ("aligning", "paused"):
+            self.target_reached_timer.stop()
             self.ui.jointsAreMovingLabel.hide()
             self.ui.motionControl.setEnabled(False)
-            self.ui.scanningLabel.setText("● SCANNING...")
+            self.ui.scanningLabel.setText(SCANNING_ACTIVE_TEXT)
             self.ui.scanningLabel.setStyleSheet(SCANNING_LABEL_STYLE)
             self.camera.start_scanning()
+            self.scanning_successful_timer.start(STATUS_LABEL_DELAY_MS)
             self.ui.startButton.setText("Pause")
             self._phase = "scanning"
 
         elif self._phase == "scanning":
             print("Scanning paused for joint re-calibration")
-            self.camera.pause_scanning()
-            self.ui.motionControl.setEnabled(True)
-            self.ui.scanningLabel.setText("● PAUSED")
-            self.ui.scanningLabel.setStyleSheet(PAUSED_LABEL_STYLE)
-            self.ui.startButton.setText("Scan")
-            self._phase = "paused"
+            self._enter_paused()
+
+    def _enter_paused(self) -> None:
+        self.scanning_successful_timer.stop()
+        self.camera.pause_scanning()
+        self.ui.motionControl.setEnabled(True)
+        self.ui.scanningLabel.setText(PAUSED_TEXT)
+        self.ui.scanningLabel.setStyleSheet(PAUSED_LABEL_STYLE)
+        self.ui.startButton.setText("Scan")
+        self._phase = "paused"
+
+    def _show_target_reached(self):
+        self._target_reached = True
+        self.ui.jointsAreMovingLabel.setText(TARGET_REACHED_TEXT)
+
+    def _show_scanning_successful(self):
+        self.ui.scanningLabel.setText(SCANNING_SUCCESSFUL_TEXT)
 
     def can_select_tooth(self) -> bool:
         return self.camera.check_ready("select tooth")
@@ -151,12 +187,7 @@ class ControlPanel(QMainWindow):
 
         if self._phase == "scanning":
             print("Stabilization lost during scan — pausing automatically")
-            self.camera.pause_scanning()
-            self.ui.motionControl.setEnabled(True)
-            self.ui.scanningLabel.setText("● PAUSED")
-            self.ui.scanningLabel.setStyleSheet(PAUSED_LABEL_STYLE)
-            self.ui.startButton.setText("Scan")
-            self._phase = "paused"
+            self._enter_paused()
             self.stabilization_error_label.show()
             self.ui.startButton.setEnabled(False)
             self.tooth_target.clear()
@@ -168,6 +199,7 @@ class ControlPanel(QMainWindow):
         self.stabilization_error_label.show()
         self.ui.startButton.setEnabled(False)
         self.ui.startButton.setText("Start")
+        self.target_reached_timer.stop()
         self.ui.jointsAreMovingLabel.hide()
         self.ui.motionControl.setEnabled(True)
         self._phase = "idle"
